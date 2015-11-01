@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+			Sanjibini Ph.
+		</title>
+		<link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+		<link rel="stylesheet" type="text/css" href="./assets/css/jquery-ui.css" />
+
+		<script type="text/javascript" src="./assets/scripts/jquery.js"></script>
+		<script type="text/javascript" src="./assets/scripts/jquery-ui.js"></script>
+
+		<script type="text/javascript" src="./assets/scripts/angular.min.js"></script>
+		<script type="text/javascript" src="./assets/scripts/angular-routes.js"></script>
+
+		<script type="text/javascript" src="./assets/scripts/bootstrap.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="./assets/css/bootstrap.min.css" />
+
+		<script type="text/javascript" src="./modules/billing/billing.client.module.js"></script>
+		<script type="text/javascript" src="./modules/billing/controllers/billing.client.controller.js"></script>
+		<script type="text/javascript" src="./modules/billing/config/billing.client.route.js"></script>
+
+		<script type="text/javascript" src="./modules/inventory/inventory.client.module.js"></script>
+		<script type="text/javascript" src="./modules/inventory/services/inventory.client.service.js"></script>
+		<script type="text/javascript" src="./modules/inventory/controllers/inventory.client.controller.js"></script>
+		<script type="text/javascript" src="./modules/inventory/config/inventory.client.routes.js"></script>
+
+		<script type="text/javascript" src="./modules/mr/mr.client.module.js"></script>
+		<script type="text/javascript" src="./modules/mr/services/mr.client.service.js"></script>
+		<script type="text/javascript" src="./modules/mr/controllers/mr.client.controller.js"></script>
+		<script type="text/javascript" src="./modules/mr/config/mr.client.routes.js"></script>
+
+		<script type="text/javascript" src="./app.js"></script>
+
+		<script>
+		    $(document).ready(function() {
+		        $('.invoice-icon').click( function( event ) {
+		        	event.stopPropagation();
+		        	$('#dialog_invoice').dialog();
+		        });
+
+		        $('.inv-icon').click( function( event ) {
+		        	event.stopPropagation();
+		        	$('#dialog_inv').dialog();
+		        });
+
+		        $('.mr-icon').click( function( event ) {
+		        	event.stopPropagation();
+		        	$('#dialog_mr').dialog();
+		        });
+		    });
+		</script>
+		 
+	</head>
+	<body>
+		<div class="main-container">
+			<h1 class="ribbon">
+			   <strong style="float: left; color: LIGHTGREEN;">CIMS</strong><strong style="padding-left: 15px; color: lightblue;"> Central Information Management System</strong><strong style="margin-left: 67%; color: #AA6000;">Sanjibini Suppliers</strong>
+			</h1>
+
+			<div class="content">
+
+				<table style="border: none;">
+					<tr>
+						<td class="invoice-icon"><a ng-href="#/bill"><img src="./assets/images/invoice.png" caption="hello" style="height: 128px; width: 128px;" /></a></td>
+						<td class="inv-icon"><a ng-href="#/inv"><img src="./assets/images/inventory.png" style="height: 128px; width: 128px;" /></a></td>
+						<td class="mr-icon"><a ng-href="#/mr"><img src="./assets/images/mr.png" style="height: 128px; width: 128px;" /></a></td>
+					</tr>
+					<tr style="text-align: center;">
+						<td class="menu-captions invoice-icon">Prepare Invoice</td>
+						<td class="menu-captions inv-icon">Inventory</td>
+						<td class="menu-captions inv-icon">Medical Representatives</td>
+					</tr>
+				</table>
+
+				<div id="dialog_invoice" class="dialog_window" title="Billing" style="display: none">
+				    <section ng-view></section>
+				</div>
+
+				<div id="dialog_inv" class="dialog_window" title="Inventory" style="display: none">
+				    <section ng-view></section>
+				</div>
+
+				<div id="dialog_mr" class="dialog_window" title="Medical Representatives" style="display: none">
+				    <section ng-view></section>
+				</div>
+				
+			</div>
+
+			<h1 class="ribbon-footer">
+			   <strong class="ribbon-content"> </strong>
+
+			</h1>
+
+		</div>
+	</body>
+</html>

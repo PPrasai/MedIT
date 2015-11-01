@@ -1,0 +1,130 @@
+body {
+	background-image: url('../images/background.png');
+	overflow: hidden;
+}
+
+#new-product {
+	margin-top: 20px;
+	padding: 10px;
+}
+
+#new-mr {
+	margin-top: 20px;
+	padding: 10px;
+}
+
+#new-mr:hover {
+	background-color: grey;
+	width: 200px;
+}
+
+.new-product-modal-content {
+	padding: 20px;
+	color: black;
+	background-color: lightgrey;
+}
+
+.ui-dialog {
+	height: auto !important;
+	min-height: 40% !important;
+	width: 95% !important;
+	top: 50px !important;
+}
+
+#dialog_new_product {
+	width: 200px !important;
+}
+
+#new-product:hover {
+	background-color: grey;
+	width: 200px;
+}
+
+.inv-icon:hover {
+	color: lightblue;
+}
+
+.invoice-icon:hover {
+	color: lightblue;
+}
+
+tr td th {
+	text-align: center;
+}
+
+.container {
+	margin-left: 0px !important;
+	margin-right: 0px !important;
+	width: auto !important;
+	height: auto;
+	min-height: 400px;
+	overflow: hidden;
+	background-color: lightgrey;
+	color: black;
+}
+
+.content {
+	margin-top: 25px;
+	margin-left: 25px;
+}
+
+.menu-captions {
+	color: lightgreen;
+	font-weight: 5px;
+}
+
+.ribbon {
+ font-size: 16px !important;
+ /* This ribbon is based on a 16px font side and a 24px vertical rhythm. I've used em's to position each element for scalability. If you want to use a different font size you may have to play with the position of the ribbon elements */
+
+ width: 100%;
+    
+ position: relative;
+
+background-image: -webkit-gradient(
+	linear,
+	left top,
+	left bottom,
+	color-stop(0, #040505),
+	color-stop(1, #3F4242)
+);
+background-image: -o-linear-gradient(bottom, #040505 0%, #3F4242 100%);
+background-image: -moz-linear-gradient(bottom, #040505 0%, #3F4242 100%);
+background-image: -webkit-linear-gradient(bottom, #040505 0%, #3F4242 100%);
+background-image: -ms-linear-gradient(bottom, #040505 0%, #3F4242 100%);
+background-image: linear-gradient(to bottom, #040505 0%, #3F4242 100%);
+
+ color: #fff;
+ padding: 1em 2em; /* Adjust to suit */
+ margin-left: 0px;
+ text-align: center;
+	margin-top: -7px;
+	margin-right: -8px;
+}
+
+.ribbon-footer {
+ 	font-size: 16px !important;
+ 	width: 100%;
+ 	position: absolute;
+ 	bottom: 0;
+ 	background-color: red;
+ 	margin-left: 0px;
+ 	margin-bottom: 0px;
+
+ 	background-image: -webkit-gradient(
+		linear,
+		left top,
+		left bottom,
+		color-stop(0, #3F4242),
+		color-stop(1, #0405053F4242)
+	);
+	background-image: -o-linear-gradient(bottom, #3F4242 0%, #040505 100%);
+	background-image: -moz-linear-gradient(bottom, #3F4242 0%, #040505 100%);
+	background-image: -webkit-linear-gradient(bottom, #3F4242 0%, #040505 100%);
+	background-image: -ms-linear-gradient(bottom, #3F4242 0%, #040505 100%);
+	background-image: linear-gradient(to bottom, #3F4242 0%, #040505 100%);
+
+	 color: #fff;
+	 text-align: left;
+	 padding: 1em 2em; /* Adjust to suit */
+}

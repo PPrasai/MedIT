@@ -1,0 +1,116 @@
+<div class="container">
+	
+	<div class="row-fluid">
+		<div id="new-mr" data-toggle="modal" data-target=".addNewMR">
+			<span id="new-mr-span"><img src="./assets/images/plus.png" style="height: 30px; width: 30px;" /> Add New MR</span>
+		</div>	
+	</div>
+
+	<div class="row-fluid">
+		<div class="col-md-12">
+			<div class="panel panel-danger" style="margin-top: 20px;">
+			  	<div class="panel-heading">
+			    	<h3 class="panel-title panel-danger">MR Information</h3>
+			  	</div>
+
+			  	<div class="panel-body">
+					<div class="row-fluid">
+						<div class="col-md-12">
+							<table class="table table-hover">
+								<tr ng-repeat="mr in MRList">
+									<td>
+										<div class="col-md-2">{{mr.info.name}}</div>	
+										<div class="col-md-2">{{mr.info.contact}}</div>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	
+
+	<div class="col-md-6">
+			<div class="panel panel-danger" style="margin-top: 20px;">
+			  	<div class="panel-heading">
+			    	<h3 class="panel-title panel-danger">Sales Information</h3>
+			  	</div>
+
+			  	<div class="panel-body">
+			  		<table class="table table-hover">
+			  			<tr>
+			  				<th>
+			  					Product Name
+			  				</th>
+			  				<th>
+			  					Sales this week
+			  				</th>
+			  				<th>
+			  					Sales this month
+			  				</th>
+			  				<th>
+			  					Details
+			  				</th>
+			  			</tr>
+			  			<tr ng-repeat="item in productList">
+			  				<td>
+			  					{{item.name}}
+			  				</td>
+			  				<td>
+			  					25
+			  				</td>
+			  				<td>
+			  					78
+			  				</td>
+			  				<td>
+			  					<img src="./assets/images/checkout.png" style="height: 20px; width: 20px;" title="View individual sales details" />
+			  				</td>
+			  			</tr>
+			  		</table>
+			  	</div>
+			</div>
+		</div>
+	</div>
+
+	<hr />
+
+	<div class="row-fluid">
+		<div class="col-md-12">
+			<div class="panel panel-danger" style="margin-top: 20px;">
+				<div class="panel-heading">
+					<h3 class="panel-title panel-danger">Sales data visualization by individual MR</h3>
+				</div>
+
+				<div class="panel-body">
+					Graphs/Charts here
+				</div>
+			</div>
+		</div>	
+	</div>
+
+	<div class="row-fluid">
+		<div class="col-md-12">
+			<div class="panel panel-danger" style="margin-top: 20px;">
+				<div class="panel-heading">
+					<h3 class="panel-title panel-danger">MR bonus math</h3>
+				</div>
+				<div class="panel-body">
+					MR bonus details here
+				</div>
+			</div>
+		</div>	
+	</div>
+</div>
+
+<div class="modal fade addNewMR" tabindex="-1" role="dialog" aria-labelledby="addNewMR" aria-hidden="true" style="margin-top: 30px;">
+  	<div class="modal-dialog modal-sm">
+    	<div class="modal-content new-product-modal-content">
+    		<input type="text" class="form-control" placeholder="Product Name" style="margin-bottom: 10px;" ng-model="newProduct.name" />
+    		<input type="text" class="form-control" placeholder="Bonus Condition" style="margin-bottom: 10px;" ng-model="newProduct.bonus.bonus_condition" />
+    		<input type="number" class="form-control" placeholder="Bonus Amount" style="margin-bottom: 10px;" ng-model="newProduct.bonus.bonus_amt" />
+    		<br />
+    		<img src="./assets/images/tick.png" title="Confirm" style="height: 30px; width: 30px;" ng-click="confirmNewMR()" /> <img src="./assets/images/wrong.png" title="Abort" style="height: 30px; width: 30px;" />
+    	</div>
+  	</div>
+</div>

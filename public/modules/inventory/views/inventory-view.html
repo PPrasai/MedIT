@@ -1,0 +1,133 @@
+<div class="container">
+	
+	<div class="row-fluid">
+		<div id="new-product" data-toggle="modal" data-target=".addNewProduct">
+			<span id="new-product-span"><img src="./assets/images/plus.png" style="height: 30px; width: 30px;" /> Add New Product</span>
+		</div>	
+	</div>
+
+	<div class="row-fluid">
+		<div class="col-md-6">
+			<div class="panel panel-danger" style="margin-top: 20px;">
+			  	<div class="panel-heading">
+			    	<h3 class="panel-title panel-danger">Stock Information</h3>
+			  	</div>
+
+			  	<div class="panel-body">
+			  		<table class="table table-hover">
+						<tr>
+							<th>
+								Product Name
+							</th>
+							<th>
+								Units in stock
+							</th>
+							<th colspan=3>
+								Operation
+							</th>
+						</tr>
+						<tr ng-repeat="item in productList">
+			  				<td>
+			  					{{item.name}}
+			  				</td>
+			  				<td>
+			  					25
+			  				</td>
+			  				<td>
+			  					<img src="./assets/images/plus.png" style="height: 20px; width: 20px;" title="Add to stock" />
+			  				</td>
+			  				<td>
+			  					<img src="./assets/images/minus.png" style="height: 20px; width: 20px;" title="Remove from stock" />
+			  				</td>
+			  				<td>
+			  					<img src="./assets/images/item_edit.png" style="height: 20px; width: 20px;" title="Edit name/bonus condition" />
+			  				</td>
+			  			</tr>
+					</table>
+			  	</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="panel panel-danger" style="margin-top: 20px;">
+			  	<div class="panel-heading">
+			    	<h3 class="panel-title panel-danger">Sales Information</h3>
+			  	</div>
+
+			  	<div class="panel-body">
+			  		<table class="table table-hover">
+			  			<tr>
+			  				<th>
+			  					Product Name
+			  				</th>
+			  				<th>
+			  					Sales this week
+			  				</th>
+			  				<th>
+			  					Sales this month
+			  				</th>
+			  				<th>
+			  					Details
+			  				</th>
+			  			</tr>
+			  			<tr ng-repeat="item in productList">
+			  				<td>
+			  					{{item.name}}
+			  				</td>
+			  				<td>
+			  					25
+			  				</td>
+			  				<td>
+			  					78
+			  				</td>
+			  				<td>
+			  					<img src="./assets/images/checkout.png" style="height: 20px; width: 20px;" title="View individual sales details" />
+			  				</td>
+			  			</tr>
+			  		</table>
+			  	</div>
+			</div>
+		</div>
+	</div>
+
+	<hr />
+
+	<div class="row-fluid">
+		<div class="col-md-12">
+			<div class="panel panel-danger" style="margin-top: 20px;">
+				<div class="panel-heading">
+					<h3 class="panel-title panel-danger">Sales data visualization by individual product</h3>
+				</div>
+
+				<div class="panel-body">
+					Graphs/Charts here
+				</div>
+			</div>
+		</div>	
+	</div>
+
+	<div class="row-fluid">
+		<div class="col-md-12">
+			<div class="panel panel-danger" style="margin-top: 20px;">
+				<div class="panel-heading">
+					<h3 class="panel-title panel-danger">Product reorder math</h3>
+				</div>
+
+				<div class="panel-body">
+					EOQs / reorder level / reorder lead time here
+				</div>
+			</div>
+		</div>	
+	</div>
+</div>
+
+<div class="modal fade addNewProduct" tabindex="-1" role="dialog" aria-labelledby="addNewProduct" aria-hidden="true" style="margin-top: 30px;">
+  	<div class="modal-dialog modal-sm">
+    	<div class="modal-content new-product-modal-content">
+    		<input type="text" class="form-control" placeholder="Product Name" style="margin-bottom: 10px;" ng-model="newProduct.name" />
+    		<input type="text" class="form-control" placeholder="Bonus Condition" style="margin-bottom: 10px;" ng-model="newProduct.bonus.bonus_condition" />
+    		<input type="number" class="form-control" placeholder="Bonus Amount" style="margin-bottom: 10px;" ng-model="newProduct.bonus.bonus_amt" />
+    		<br />
+    		<img src="./assets/images/tick.png" title="Confirm" style="height: 30px; width: 30px;" ng-click="confirmNewProduct()" /> <img src="./assets/images/wrong.png" title="Abort" style="height: 30px; width: 30px;" />
+    	</div>
+  	</div>
+</div>
