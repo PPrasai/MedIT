@@ -17,10 +17,24 @@
 					<div class="row-fluid">
 						<div class="col-md-12">
 							<table class="table table-hover">
-								<tr ng-repeat="mr in MRList">
+								<tr>
+									<th>MR Name</th>
+									<th>Total Sales</th>
+									<th>Contact</th>
+									<th>Pharmacy Count</th>
+								</tr>
+								<tr ng-repeat="mr in MRList" ng-click="openMRDetailsModal( this )">
+									<td mrID={{mr._id}}>
+										{{mr.info.name }}
+									</td>
 									<td>
-										<div class="col-md-2">{{mr.info.name}}</div>	
-										<div class="col-md-2">{{mr.info.contact}}</div>
+										*Sales
+									</td>
+									<td>
+										{{mr.info.contact}}
+									</td>
+									<td>
+										*Count
 									</td>
 								</tr>
 							</table> 
@@ -31,86 +45,142 @@
 		</div>
 	</div>	
 
-	<div class="col-md-6">
-			<div class="panel panel-danger" style="margin-top: 20px;">
-			  	<div class="panel-heading">
-			    	<h3 class="panel-title panel-danger">Sales Information</h3>
-			  	</div>
+	<div class="modal fade addNewMR" tabindex="-1" role="dialog" aria-labelledby="addNewMR" aria-hidden="true" style="margin-top: 30px;">
+	  	<div class="modal-dialog modal-sm">
+	    	<div class="modal-content new-product-modal-content">
+	    		<input type="text" class="form-control" placeholder = "MR Name" style="margin-bottom: 10px;" ng-model="newMR.info.name" />
+	    		<input type="number" class="form-control" placeholder = "Contact number" style="margin-bottom: 10px;" ng-model="newMR.info.contact" />
+	    		<input type="text" class="form-control" placeholder = "Address" style="margin-bottom: 10px;" ng-model="newMR.info.address" />
+	    		<input type="text" class="form-control" placeholder = "Sales target" style="margin-bottom: 10px;" ng-model="newMR.info.target" />
+	    		<input type="text" class="form-control" placeholder = "Sales target duration" style="margin-bottom: 10px;" ng-model="newMR.info.targetWindow" />
+	    		<input type="date" class="form-control" placeholder = "Employed Since" style="margin-bottom: 10px;" ng-model="newMR.info.employedSince" />
 
-			  	<div class="panel-body">
-			  		<table class="table table-hover">
-			  			<tr>
-			  				<th>
-			  					Product Name
-			  				</th>
-			  				<th>
-			  					Sales this week
-			  				</th>
-			  				<th>
-			  					Sales this month
-			  				</th>
-			  				<th>
-			  					Details
-			  				</th>
-			  			</tr>
-			  			<tr ng-repeat="item in productList">
-			  				<td>
-			  					{{item.name}}
-			  				</td>
-			  				<td>
-			  					25
-			  				</td>
-			  				<td>
-			  					78
-			  				</td>
-			  				<td>
-			  					<img src="./assets/images/checkout.png" style="height: 20px; width: 20px;" title="View individual sales details" />
-			  				</td>
-			  			</tr>
-			  		</table>
-			  	</div>
-			</div>
-		</div>
+	    		<br />
+	    		<img src="./assets/images/tick.png" title="Confirm" style="height: 30px; width: 30px;" ng-click="confirmNewMR()" /> <img src="./assets/images/wrong.png" title="Abort" style="height: 30px; width: 30px;" />
+	    	</div>
+	  	</div>
 	</div>
 
-	<hr />
 
-	<div class="row-fluid">
-		<div class="col-md-12">
-			<div class="panel panel-danger" style="margin-top: 20px;">
-				<div class="panel-heading">
-					<h3 class="panel-title panel-danger">Sales data visualization by individual MR</h3>
-				</div>
+	<div class="modal fade MRDetails" tabindex="-1" role="dialog" aria-labelledby="MRDetails" aria-hidden="true" style="margin-top: 30px;">
+	  	<div class="modal-dialog modal-lg">
+	    	<div class="modal-content mr-details-modal-content">
+	    		<h3>{{selectedMR.info.name}}</h3>
+	    		<div class="container">
+	    			<div class="row-fluid">
+	    				<div class="col-md-12">
+	    					<div class="panel panel-danger" style="margin-top: 20px;">
+	    						<div class="panel-heading">
+									<h3 class="panel-title panel-danger">MR's sales details</h3>
+								</div>
 
-				<div class="panel-body">
-					Graphs/Charts here
-				</div>
-			</div>
-		</div>	
+								<div class="panel-body">
+			    					<table class='table table-hover'>
+			    						<tr>
+			    							<th>Product</th>
+			    							<th>Total sales</th>
+			    							<th>Sales this week</th>
+			    							<th>Sales this month</th>
+			    							<th>Growth rate</th>
+			    						</tr>
+			    						<tr>*ngrepeat here</tr>
+			    					</table>
+			    				</div>
+			    			</div>
+	    				</div>
+	    			</div>
+
+	    			<div class="row-fluid">
+						<div class="col-md-12">
+							<div class="panel panel-danger" style="margin-top: 20px;">
+								<div class="panel-heading">
+									<h3 class="panel-title panel-danger">Sales data visualization by individual MR</h3>
+								</div>
+
+								<div class="panel-body">
+									Graphs/Charts here
+								</div>
+							</div>
+						</div>	
+					</div>
+
+					<div class="row-fluid">
+						<div class="col-md-12">
+							<div class="panel panel-danger" style="margin-top: 20px;">
+								<div class="panel-heading">
+									<h3 class="panel-title panel-danger">MR bonus math</h3>
+								</div>
+								<div class="panel-body">
+									MR bonus details here
+								</div>
+							</div>
+						</div>	
+					</div>
+
+					<div class="row-fluid">
+						<div class="col-md-12">
+							<div class="panel panel-danger" style="margin-top: 20px;">
+								<div class="panel-heading">
+									<h3 class="panel-title panel-danger">Pharmacy under this MR</h3>
+								</div>
+
+								<div class="panel-body">
+
+									<div class="row-fluid">
+										<div id="new-pharmacy" data-toggle="modal" data-target=".newPharmacy">
+											<span id="new-mr-span"><img src="./assets/images/plus.png" style="height: 30px; width: 30px;" /> Add New Pharmacy</span>
+										</div>	
+									</div>
+
+									<table class='table table-hover' style="margin-top: 10px;">
+										<tr>
+											<th>Pharmacy</th>
+											<th>Total sales</th>
+											<th>Contact number</th>
+											<th>Address</th>
+											<th>Contracted Since</th>
+										</tr>
+
+										<tr ng-repeat="firm in selectedMR.firms">
+											<td>
+												{{firm.pharmaName}}
+											</td>
+											<td>
+												*tbd
+											</td>
+											<td>
+												{{firm.contact}}
+											</td>
+											<td>
+												{{firm.address}}
+											</td>
+											<td>
+												{{firm.contractedSince}}
+											</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+						</div>	
+					</div>
+	    		</div>
+	    	</div>
+	  	</div>
 	</div>
 
-	<div class="row-fluid">
-		<div class="col-md-12">
-			<div class="panel panel-danger" style="margin-top: 20px;">
-				<div class="panel-heading">
-					<h3 class="panel-title panel-danger">MR bonus math</h3>
-				</div>
-				<div class="panel-body">
-					MR bonus details here
-				</div>
-			</div>
-		</div>	
+	<div class="modal fade newPharmacy" tabindex="-1" role="dialog" aria-labelledby="newPharmacy" aria-hidden="true" style="margin-top: 30px;">
+	  	<div class="modal-dialog modal-sm">
+	    	<div class="modal-content new-pharmacy-modal-content">
+
+	    		<input type="text" class="form-control" placeholder = "Pharmacy Name" style="margin-bottom: 10px;" ng-model="newPharmacy.pharmaName" />
+	    		<input type="text" class="form-control" placeholder = "Address" style="margin-bottom: 10px;" ng-model="newPharmacy.address" />
+	    		<input type="number" class="form-control" placeholder = "Contact" style="margin-bottom: 10px;" ng-model="newPharmacy.contact" />
+	    		<input type="date" class="form-control" placeholder = "Contracted since" style="margin-bottom: 10px;" ng-model="newPharmacy.contractedSince" />
+
+	    		<br />
+	    		<img src="./assets/images/tick.png" title="Confirm" style="height: 30px; width: 30px;" ng-click="confirmNewPharmacy()" /> <img src="./assets/images/wrong.png" title="Abort" style="height: 30px; width: 30px;" />
+	    	</div>
+	  	</div>
 	</div>
+
 </div>
-
-<!-- <div class="modal fade addNewMR" tabindex="-1" role="dialog" aria-labelledby="addNewMR" aria-hidden="true" style="margin-top: 30px;">
-  	<div class="modal-dialog modal-sm">
-    	<div class="modal-content new-product-modal-content">
-    		<input type="text" class="form-control" placeholder="Product Name" style="margin-bottom: 10px;" ng-model="newProduct.name" />
-    		<input type="text" class="form-control" placeholder="Bonus Condition" style="margin-bottom: 10px;" ng-model="newProduct.bonus.bonus_condition" />
-    		<input type="number" class="form-control" placeholder="Bonus Amount" style="margin-bottom: 10px;" ng-model="newProduct.bonus.bonus_amt" />
-    		<br />
-    		<img src="./assets/images/tick.png" title="Confirm" style="height: 30px; width: 30px;" ng-click="confirmNewMR()" /> <img src="./assets/images/wrong.png" title="Abort" style="height: 30px; width: 30px;" />
-    	</div>
-  	</div>
-</div> -->

@@ -3,9 +3,22 @@ body {
 	overflow: hidden;
 }
 
+.billingControl {
+	background: transparent;
+  	border-top: none;
+  	border-right: none;
+  	border-left: none;
+  	border-width: 1px;
+  	border-color: black;
+}
+
 #new-product {
 	margin-top: 20px;
 	padding: 10px;
+}
+
+.modal-lg {
+  width: 90% !important;
 }
 
 #new-mr {
@@ -22,6 +35,26 @@ body {
 	padding: 20px;
 	color: black;
 	background-color: lightgrey;
+}
+
+.buy-new-product-modal-content {
+	padding: 20px;
+	min-height: 500px;
+	color: black;
+	background-color: lightgrey;
+}
+
+.new-pharmacy-modal-content {
+	padding: 20px;
+	color: black;
+	background-color: lightgrey;
+}
+
+.mr-details-modal-content {
+	padding: 20px;
+	color: black;
+	background-color: lightgrey;
+	overflow: scroll;
 }
 
 .ui-dialog {

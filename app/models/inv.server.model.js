@@ -12,6 +12,7 @@ var ItemSchema = new Schema({
 			qty: Number,
 			rate: Number,
 			batch: String,
+			mrp: Number,
 			expires_in: Date,
 			payment_type: String,
 			payment_amount: Number,
@@ -19,6 +20,7 @@ var ItemSchema = new Schema({
 			payment_due_date: Date
 	}],
 	sales: [{
+			pharmacy_id: String,
 			date: Date,
 			invoice_id: String,
 			qty: Number,
@@ -36,7 +38,10 @@ var ItemSchema = new Schema({
 		bonus_condition: Number,
 		bonus_amt: Number
 	},
-	qty: Number
+	qty: {
+		type: Number,
+		default: 0
+	}
 });
 
 mongoose.model( 'Item', ItemSchema );

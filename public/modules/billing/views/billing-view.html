@@ -1,2 +1,214 @@
-{{moduleTitle}}
+<div class="container">
+	<div class="row-fluid">
+		<div class="col-md-6">
+			<div class="panel panel-info" style="margin-top: 20px;">
+			  	<div class="panel-heading">
+			    	<h3 class="panel-title panel-info">Create New Invoice</h3>
+			  	</div>
 
+			  	<div class="panel-body">
+			  		<span class="label label-info">
+			  			Invoice Number
+			  		</span>
+			  		<input type="text" class="form-control" ng-model="newInvoice.invoice_id" id="invoice_id" />
+			  		<span class="label label-info">
+			  			Date
+			  		</span>
+			  		<input type="date" class="form-control" ng-model="newInvoice.date"/>
+			  		<span class="label label-info">
+			  			Pharmacy
+			  		</span>
+			  		<select class="form-control" ng-model="newInvoice.pharma">
+			  			<option ng-repeat="firm in PharmacyList">
+			  				{{firm}}
+			  			</option>
+			  		</select>
+			  		<button class="btn btn-info" style="margin-top: 10px;" id="btn" ng-click="createNewInvocie()">Create New Invoice</button>
+			  	</div>
+			 </div>
+		</div>
+		<div class="col-md-6">
+			<div class="panel panel-info" style="margin-top: 20px;">
+			  	<div class="panel-heading">
+			    	<h3 class="panel-title panel-info">Search invoices</h3>
+			  	</div>
+
+			  	<div class="panel-body">
+			  		<span class="label label-info">
+			  			Search by invoice number
+			  		</span>
+			  		<input type="text" class="form-control" />
+			  		<span class="label label-info">
+			  			Search by date
+			  		</span>
+			  		<input type="date" class="form-control" />
+			  		<span class="label label-info">
+			  			Search by batch number
+			  		</span>
+			  		<select class="form-control">
+			  			<option ng-repeat="batch in batchList">
+			  				{{batch.batch}}
+			  			</option>
+			  		</select>
+			  		<button class="btn btn-info" style="margin-top: 10px;">Search</button>
+			  	</div>
+			 </div>
+		</div>
+		<div class="col-md-12">
+			<div class="panel panel-info" style="margin-top: 20px;">
+				<div class="panel-heading">
+					<h3 class="panel-title panel-info">Last 20 invoices</h3>
+				</div>
+				<div class="panel-body">
+					{{allInvoices}}
+				</div>
+			</div>
+		</div>	
+	</div>
+</div>
+
+<div class="modal fade successModal" tabindex="-1" role="dialog" aria-labelledby="successModal" aria-hidden="true" >
+  	<div class="modal-dialog modal-md">
+    	<div class="modal-content">
+    		<div class="panel panel-success">
+				<div class="panel-heading">
+					<h3 class="panel-title panel-success">Success</h3>
+				</div>
+				<div class="panel-body">
+					<img src="./assets/images/tick.png" style="align: center;" title="Confirm" ng-click="success()" />
+				</div>
+			</div>
+    	</div>
+    </div>
+</div>
+
+<div class="modal fade addNewProduct" tabindex="-1" role="dialog" aria-labelledby="addNewProduct" aria-hidden="true" >
+  	<div class="modal-dialog modal-md">
+    	<div class="modal-content new-product-modal-content">
+    		<span class="label label-danger">
+			  	Item
+	  		</span>
+	  		<select class="form-control" ng-model="newItemInCart._id" >
+	  			<option ng-repeat="item in ProductList" value="{{item._id}}">
+	  				{{item.name}}
+	  			</option>
+	  		</select>
+	  		<span class="label label-danger">
+			  	Batch
+	  		</span>
+	  		<select class="form-control" ng-model="newItemInCart.batch">
+	  			<option ng-repeat="batch in newItemBatchList">
+	  				{{batch}}
+	  			</option>
+	  		</select>
+	  		<span class="label label-danger">
+			  	Quantity
+	  		</span>
+	  		<input type="number" class="form-control" ng-model="newItemInCart.qty" />
+	  		<span class="label label-danger">
+			  	Rate
+	  		</span>
+	  		<input type="number" class="form-control" ng-model="newItemInCart.rate" />
+	  		<span class="label label-danger">
+			  	MRP
+	  		</span>
+	  		<input type="number" class="form-control" ng-model="newItemInCart.mrp"  />
+	  		<span class="label label-danger">
+			  	Bonus
+	  		</span>
+	  		<input type="number" class="form-control" ng-model="newItemInCart.bonus" disabled />
+	  		<span class="label label-danger">
+			  	Expiry
+	  		</span>
+	  		<input type="text" class="form-control" ng-model="newItemInCart.expiry" disabled />
+
+	  		<br />
+	  		<img src="./assets/images/tick.png" title="Confirm" style="height: 30px; width: 30px;" ng-click="addToCart()" /> <img src="./assets/images/wrong.png" title="Abort" style="height: 30px; width: 30px;" />
+    	</div>
+    </div>
+</div>
+
+<div class="modal fade newInvoiceModal" tabindex="-1" role="dialog" aria-labelledby="newInvoiceModal" aria-hidden="true" style="margin-top: 30px;">
+  	<div class="modal-dialog modal-lg">
+    	<div class="modal-content new-product-modal-content">
+    		<div class="col-md-4">
+	    		<span class="label label-danger">
+				  	Invoice Number
+		  		</span>
+    			<h3 class="panel-title">{{newInvoice.invoice_id}}</h3>
+    		</div>
+    		<div class="col-md-4">
+    			<span class="label label-danger">
+		  			Pharmacy
+		  		</span>
+    			<h3 class="panel-title">{{newInvoice.pharma}}</h3>
+    		</div>
+    		<div class="col-md-4">
+    			<span class="label label-danger">
+		  			Date
+		  		</span>
+    			<h3 class="panel-title">{{newInvoice.date}}</h3>
+    		</div>
+
+    		<br /><br /><br />
+
+    		<div class="row-fluid">
+				<span id="new-product-span" ng-click="newItemModalShow()"><img src="./assets/images/plus.png" style="height: 30px; width: 30px;" />Add Item</span>		
+			</div>
+
+    		<div class="row-fluid" style="margin-top: 10px;">
+    			<table class="table table-hover">
+    				<tr>
+    					<th>
+    						Item
+    					</th>
+    					<th>
+    						Qty
+    					</th>
+    					<th>
+    						Rate
+    					</th>
+    					<th>
+    						MRP
+    					</th>
+    					<th>
+    						Batch
+    					</th>
+    					<th>
+    						Expiry
+    					</th>
+    					<th>
+    						Bonus
+    					</th>
+    				</tr>
+    				<tr ng-repeat="item in displayCart">
+    					<td>
+    						{{item.name}}
+    					</td>
+    					<td>
+    						{{item.qty}}
+    					</td>
+    					<td>
+    						{{item.rate}}
+    					</td>
+    					<td>
+    						{{item.mrp}}
+    					</td>
+    					<td>
+    						{{item.batch}}
+    					</td>
+    					<td>
+    						{{item.expiry}}
+    					</td>
+    					<td>
+    						{{item.bonus}}
+    					</td>
+    				</tr>
+    			</table>
+    		</div>
+    		
+    		<br />
+    		<img src="./assets/images/tick.png" title="Confirm" style="height: 30px; width: 30px;" ng-click="checkout()" /> <img src="./assets/images/wrong.png" title="Abort" style="height: 30px; width: 30px;" />
+    	</div>
+  	</div>
+</div>

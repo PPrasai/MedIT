@@ -36,6 +36,18 @@ angular.module( 'Inventory' ).factory( 'InventoryService', function( $http ) {
 					console.log( err ); 
 				})
 			}
+		},
+
+		PUTinv: function( selected ) {
+			return $http({
+				method: 'PUT',
+				url: 'inv/'+ selected._id,
+				data: selected
+			}).then( function( result ) {
+				return result.data;
+			}, function( err ) {
+				console.log( err );
+			});
 		}
 	};
 });

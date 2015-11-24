@@ -15,7 +15,7 @@ angular.module( 'MR' ).factory( 'MRService', function( $http ) {
 
 			else {
 				return $http({
-					method: 'POST',
+					method: 'GET',
 					url: 'mr/'+ id 
 				}).then( function( result ) {
 					return result.data;
@@ -23,6 +23,30 @@ angular.module( 'MR' ).factory( 'MRService', function( $http ) {
 					console.log( err );
 				});
 			}
+		},
+
+		POSTMR: function( newMR ) {
+			return $http({
+				method: 'POST',
+				url: 'mr',
+				data: newMR
+			}).then( function( result ) {
+				return result.data;
+			}, function( err ) {
+				console.log( err );
+			});
+		},
+
+		PUTMR: function( selectedMR ) {
+			return $http({
+				method: 'PUT',
+				url: 'mr/'+ selectedMR._id,
+				data: selectedMR
+			}).then( function( result ) {
+				return result.data;
+			}, function( err ) {
+				console.log( err );
+			});
 		}
 	}
 });
